@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {MessageComponent} from "./message/message.component";
 import {RouterModule, Routes} from "@angular/router";
+import {MessageModule} from "./message/message.module";
+import {HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes=[
   {path:"message", component:MessageComponent}
@@ -12,12 +14,13 @@ const appRoutes: Routes=[
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MessageComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MessageModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
