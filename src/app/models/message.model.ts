@@ -1,6 +1,4 @@
 export class MessageModel {
-  private _id:string;
-  private _text:string;
 
 
   constructor(id: string, text: string) {
@@ -15,7 +13,6 @@ export class MessageModel {
   set id(value: string) {
     this._id = value;
   }
-
   get text(): string {
     return this._text;
   }
@@ -23,4 +20,6 @@ export class MessageModel {
   set text(value: string) {
     this._text = value;
   }
+  private _id:string;
+  private _text:string;
 }

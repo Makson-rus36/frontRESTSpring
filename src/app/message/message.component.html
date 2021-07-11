@@ -1,4 +1,17 @@
 <p>message works!</p>
-<div *ngFor="let message of messages">
-  <div>{{message.id}} / {{message.text}}</div>
+<p>index: {{index}}</p>
+<div class="form-group col md-5">
+  <div class="form">
+    <input [(ngModel)]="message.text" class="form-control mb-3" placeholder="Message" type="text">
+    <button class="btn btn-primary mr-3" *ngIf="isEdit" (click)="updateMessage()">Update</button>
+    <button class="btn btn-primary mr-3" *ngIf="isEdit" (click)="setIsEdit(false); cancelChanges();">Cancel</button>
+    <button class="btn btn-primary mr-3" *ngIf="!isEdit" (click)="newMessage()">Save</button>
+  </div>
+</div>
+<div *ngFor="let message1 of messages">
+  <div class="form-inline my-2">
+    <div>{{message1.id}} / {{message1.text}}</div>
+    <button (click)="setIsEdit(true); setEditMessage(message1)" class="btn btn-warning ml-3">Edit</button>
+    <button class="btn btn-danger ml-3">Delete</button>
+  </div>
 </div>

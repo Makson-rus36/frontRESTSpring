@@ -10,15 +10,50 @@ import {HttpClient} from "@angular/common/http";
   providers:[MessageService]
 })
 export class MessageComponent implements OnInit {
-
+  isEdit = false;
+  index=-1;
+  message: MessageModel = new MessageModel("","");
   messages: MessageModel[]=[];
 
   constructor(private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.messageService.getMessages().subscribe(x=>{
+    this.getAllMessages();
+  }
+  getAllMessages() {
+    this.messageService.getMessages().subscribe(x => {
       this.messages = <MessageModel[]>x;
     })
   }
 
+  updateMessage(){
+    this.messageService.updateMessages(this.message).subscribe(x=>{
+      this.getAllMessages();
+    }, error => {
+      console.log(error)
+    })
+    this.message = new MessageModel("","")
+    this.isEdit=false;
+  }
+
+  newMessage() {
+    this.messageService.saveMessages(this.message).subscribe(x=>{
+      this.getAllMessages();
+    }, error => {
+      console.log(error)
+    })
+    this.message = new MessageModel("","")
+  }
+
+  setIsEdit(flag:boolean) {
+    this.isEdit = flag;
+  }
+
+  cancelChanges() {
+    this.message = new MessageModel("","")
+  }
+
+  setEditMessage(message: MessageModel) {
+    this.message = new MessageModel(message.id, message.text);
+  }
 }
