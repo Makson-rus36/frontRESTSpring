@@ -9,4 +9,5 @@ import {HttpClient} from "@angular/common/http";
   providers:[MessageService]
 })
 export class AppComponent {
+  public isMenuCollapsed = true;
 }
