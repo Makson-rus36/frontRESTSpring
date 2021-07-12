@@ -1,17 +1,16 @@
-<p>message works!</p>
-<p>index: {{index}}</p>
+<h4>Message list</h4>
 <div class="form-group col md-5">
   <div class="form">
     <input [(ngModel)]="message.text" class="form-control mb-3" placeholder="Message" type="text">
-    <button class="btn btn-primary mr-3" *ngIf="isEdit" (click)="updateMessage()">Update</button>
-    <button class="btn btn-primary mr-3" *ngIf="isEdit" (click)="setIsEdit(false); cancelChanges();">Cancel</button>
-    <button class="btn btn-primary mr-3" *ngIf="!isEdit" (click)="newMessage()">Save</button>
+    <button class="btn btn-primary me-3" *ngIf="isEdit" (click)="updateMessage()">Update</button>
+    <button class="btn btn-primary me-3" *ngIf="isEdit" (click)="setIsEdit(false); cancelChanges();">Cancel</button>
+    <button class="btn btn-primary me-3" *ngIf="!isEdit" (click)="newMessage()">Save</button>
   </div>
 </div>
 <div *ngFor="let message1 of messages">
-  <div class="form-inline my-2">
-    <div>{{message1.id}} / {{message1.text}}</div>
-    <button (click)="setIsEdit(true); setEditMessage(message1)" class="btn btn-warning ml-3">Edit</button>
-    <button class="btn btn-danger ml-3">Delete</button>
+  <div class="input-group my-2">
+    <div class="me-2">{{message1.id}} / {{message1.text}}</div>
+    <button class="btn btn-warning me-2" (click)="setIsEdit(true); setEditMessage(message1)">Edit</button>
+    <button class="btn btn-danger me-2">Delete</button>
   </div>
 </div>
