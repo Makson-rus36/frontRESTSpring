@@ -9,8 +9,8 @@
 </div>
 <div *ngFor="let message1 of messages">
   <div class="input-group my-2">
-    <div class="me-2">{{message1.id}} / {{message1.text}}</div>
+    <div class="me-2">{{message1.id}} / {{message1.text}} at {{message1.creationDate}}</div>
     <button class="btn btn-warning me-2" (click)="setIsEdit(true); setEditMessage(message1)">Edit</button>
-    <button class="btn btn-danger me-2">Delete</button>
+    <button class="btn btn-danger me-2" (click)="deleteMessage(message1)">Delete</button>
   </div>
 </div>

@@ -52,6 +52,14 @@ export class MessageComponent implements OnInit {
   cancelChanges() {
     this.message = new MessageModel("","")
   }
+  deleteMessage(message:MessageModel){
+    this.messageService.deleteMessage(message).subscribe(x=>{
+      console.log(x);
+      this.getAllMessages();
+    }, error => {
+      console.log(error);
+    });
+  }
 
   setEditMessage(message: MessageModel) {
     this.message = new MessageModel(message.id, message.text);
